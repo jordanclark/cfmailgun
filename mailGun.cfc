@@ -5,18 +5,15 @@ component {
 	,	required string publicKey
 	,	string apiUrl= "https://api.mailgun.net/v2"
 	,	string defaultDomain= ""
-	,	numeric timeout= 120
-	,	boolean debug= false
+	,	numeric httpTimeOut= 120
+	,	boolean debug= ( request.debug ?: false )
 	) {
 		this.apiKey= arguments.apiKey;
 		this.publicKey= arguments.publicKey;
 		this.apiUrl= arguments.apiUrl;
 		this.defaultDomain= arguments.defaultDomain;
-		this.httpTimeOut= arguments.timeout;
+		this.httpTimeOut= arguments.httpTimeOut;
 		this.debug= arguments.debug;
-		if ( structKeyExists( request, "debug" ) && request.debug == true ) {
-			this.debug= request.debug;
-		}
 		return this;
 	}
 
