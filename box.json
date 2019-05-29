@@ -1,0 +1,40 @@
+{
+    "name":"cfmailgun",
+    "slug":"cfmailgun",
+    "version":"0.5.0",
+    "author":"Jordan Clark <jordanclark@gmail.com>",
+    "keywords":[
+        "mailgun",
+        "mailgun.com",
+        "email",
+        "smtp",
+        "api",
+        "rest"
+    ],
+    "shortDescription":"API client for mailgun.com",
+    "type":"modules",
+    "location":"jordanclark/cfmailgun#v0.5.0",
+    "repository":{
+        "URL":"https://github.com/jordanclark/cfmailgun.git",
+        "type":"GIT"
+    },
+    "homepage":"https://github.com/jordanclark/cfmailgun",
+    "bugs":"https://github.com/jordanclark/cfmailgun/issues",
+    "license":[
+        {
+            "type":"Apache-2.0",
+            "URL":"https://github.com/jordanclark/cfmailgun/blob/master/LICENSE"
+        }
+    ],
+    "private":false,
+    "ignore":[
+        "**/.*",
+        "/test/",
+        "/tests/"
+    ],
+    "scripts":{
+        "postVersion":"package set location='jordanclark/cfmailgun#v`package version`'",
+        "onRelease":"publish",
+        "postPublish":"!git push --follow-tags"
+    }
+}
