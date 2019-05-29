@@ -142,28 +142,27 @@ component {
 				}
 			}
 		}
-		// this.debugLog( response )
+		// this.debugLog( http );
 		out.response= toString( http.fileContent );
-		this.debugLog( out.response );
-		//  RESPONSE CODE ERRORS 
-		if ( !structKeyExists( http, "responseHeader" ) || !structKeyExists( http.responseHeader, "Status_Code" ) ) {
-			out.success= false;
-		} else if ( http.responseHeader.Status_Code == "401" ) {
+		// this.debugLog( out.response );
+		out.statusCode = http.responseHeader.Status_Code ?: 500;
+		this.debugLog( out.statusCode );
+		if ( out.statusCode == "401" ) {
 			//  unauthorized 
 			out.success= false;
-		} else if ( http.responseHeader.Status_Code == "422" ) {
+		} else if ( out.statusCode == "422" ) {
 			//  unprocessable 
 			out.success= false;
-		} else if ( http.responseHeader.Status_Code == "500" ) {
+		} else if ( out.statusCode == "500" ) {
 			//  server error 
 			out.success= false;
-		} else if ( listFind( "4,5", left( http.responseHeader.Status_Code, 1 ) == "4" ) ) {
+		} else if ( listFind( "4,5", left( out.statusCode, 1 ) ) ) {
 			//  unknown error 
 			out.success= false;
-		} else if ( http.responseHeader.Status_Code == "" ) {
+		} else if ( out.statusCode == "" ) {
 			//  donno 
 			out.success= false;
-		} else if ( http.responseHeader.Status_Code == "200" ) {
+		} else if ( out.statusCode == "200" ) {
 			//  out.success 
 			out.success= true;
 		}
