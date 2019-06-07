@@ -1,7 +1,7 @@
 {
     "name":"cfmailgun",
     "slug":"cfmailgun",
-    "version":"0.5.3",
+    "version":"0.5.4",
     "author":"Jordan Clark <jordanclark@gmail.com>",
     "keywords":[
         "mailgun",
@@ -13,7 +13,7 @@
     ],
     "shortDescription":"API client for mailgun.com",
     "type":"modules",
-    "location":"jordanclark/cfmailgun#v0.5.3",
+    "location":"jordanclark/cfmailgun#v0.5.4",
     "repository":{
         "URL":"https://github.com/jordanclark/cfmailgun.git",
         "type":"GIT"
