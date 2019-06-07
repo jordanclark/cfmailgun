@@ -174,7 +174,7 @@ component {
 				out.error= "Invalid response type: " & http.responseHeader[ "Content-Type" ];
 			}
 		} catch (any cfcatch) {
-			out.error= "JSON Error: " & cfcatch.message;
+			out.error= "JSON Error: " & cfcatch.message & " " & cfcatch.detail;
 		}
 		if ( len( out.error ) ) {
 			out.success= false;
