@@ -148,25 +148,25 @@ component {
 		out.statusCode = http.responseHeader.Status_Code ?: 500;
 		this.debugLog( out.statusCode );
 		if ( out.statusCode == "401" ) {
-			//  unauthorized 
+			// unauthorized 
 			out.success= false;
 		} else if ( out.statusCode == "422" ) {
-			//  unprocessable 
+			// unprocessable 
 			out.success= false;
 		} else if ( out.statusCode == "500" ) {
-			//  server error 
+			// server error 
 			out.success= false;
 		} else if ( listFind( "4,5", left( out.statusCode, 1 ) ) ) {
-			//  unknown error 
+			// unknown error 
 			out.success= false;
 		} else if ( out.statusCode == "" ) {
-			//  donno 
+			// donno 
 			out.success= false;
 		} else if ( out.statusCode == "200" ) {
-			//  out.success 
+			// out.success 
 			out.success= true;
 		}
-		//  parse response 
+		// parse response 
 		try {
 			if ( left( http.responseHeader[ "Content-Type" ], 16 ) == "application/json" ) {
 				out.response= deserializeJSON( out.response );
