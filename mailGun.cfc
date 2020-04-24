@@ -6,8 +6,9 @@ component {
 	,	string apiUrl= "https://api.mailgun.net/v2"
 	,	string defaultDomain= ""
 	,	numeric httpTimeOut= 120
-	,	boolean debug= ( request.debug ?: false )
+	,	boolean debug
 	) {
+		arguments.debug = ( arguments.debug ?: request.debug ?: false );
 		this.apiKey= arguments.apiKey;
 		this.publicKey= arguments.publicKey;
 		this.apiUrl= arguments.apiUrl;
@@ -26,7 +27,12 @@ component {
 				request.log( arguments.input );
 			}
 		} else if ( this.debug ) {
-			cftrace( text=( isSimpleValue( arguments.input ) ? arguments.input : "" ), var=arguments.input, category="mailgun", type="information" );
+			var info= ( isSimpleValue( arguments.input ) ? arguments.input : serializeJson( arguments.input ) );
+			cftrace(
+				var= "info"
+			,	category= "mailgun"
+			,	type= "information"
+			);
 		}
 		return;
 	}
